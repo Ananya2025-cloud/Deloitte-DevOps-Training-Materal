@@ -1,0 +1,52 @@
+ 3 git log --oneline
+   4 history
+   5 git branch
+   6 git branch services
+   7 git branch
+   8 git checkout master
+   9 git checkout services
+  10 git status
+  11 git checkout master
+  12 git checkout services
+  13 git add .
+  14 git commit -m "Service.html"
+  15 git checkout master
+  16 git log --oneline
+  17 git checkout services
+  18 git log --oneline
+  19 git push origin services
+  20 history
+  21 git checkout master
+  22 git branch contact
+  23 git checkout contact
+  24 git add .
+  25 git commit -m "Committed"
+  26 git push origin contact
+  27 git checkout Test
+  28 git branch Test
+  29 git checkout Test
+  30 git push origin Test
+  31 git checkout main
+  32 git checkout master
+  33 git pull
+  34 git pull origin Test
+  35 git add .;git commit -m "Modifed Service.html";git push origin master;
+  36 git checkout services
+  37 git add .;git commit -m "Modifed Service.html";git push origin master;
+  38 git add .;git commit -m "Modifed Service.html";git push origin master;
+  39 git add .;git commit -m "Modifed Service.html";git push origin master;
+  40 git pull
+  41 git pull origin services
+  42 git add .
+  43 git commit -m "Chnages are happening"
+  44 git push origin services
+  45 git checkout master
+  46 git merge services
+  47 git log --oneline
+  48 git tag -a v1.1.0 -m "Release the Version 1.1.0" 4da1259
+  49 git tag
+  50 git show v1.1.0
+  51 git log --oneline
+  52 git tag -a v1.2.0 -m "Release 1.2" 111ca21
+  53 git tags
+  54 git tag
