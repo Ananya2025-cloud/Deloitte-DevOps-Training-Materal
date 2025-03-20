@@ -1,0 +1,53 @@
+Development Team -- Source Code --- Dockerfile --- Docker Image - Container 
+
+How to create a custom docker Images :
+Dockerfile : Dockerfile is a Text a document it contains set of instructions where user could call on the command line to build the docker image 
+
+BUILD Instructions : 
+
+FROM - Every dockerfile will start with FROM - It define the base image or Parent Image of the application 
+
+NodeJS - node , Java - Java , Web Application - WebServer , Python - Python3 - Platform 
+
+FROM openjdk , FROM python , FROM node , FROM ubuntu 
+
+COPY - To Copy file or Folder - Local Machine to Inside the docker image 
+
+In Linux If you want to download any packages we are going to use - Wget , Tomcat , SonarQube 
+
+ADD - It is same as copy - when you want to download the packages from internet like Zip , tarballs - ADD url destination path 
+RUN - To run a command - If you want install packages or anything - RUN Instruction - RUN npm install , RUN mvn clean package - POM
+
+.dockerignore - File -- Source files , .txt , pdf 
+
+MAINTAINER : It defines the Owner or Email 
+
+RUN Instructions : 
+
+    CMD - Default executor - it Define which source we have to run in a container - It is going to accept the run time arguments 
+    
+    CMD ["java","-jar","sample.jar"]
+    CMD ["node","app.js"]
+    CMD ["python3","app.py"]
+    
+    ENTRYPOINT - It will define the direct entry of the application - It won't accept the run time arguments 
+    
+    ENTRYPOINT ["node","app.js"]
+    
+    EXPOSE - Host Number - On which port Number we have to expose the application which customers can access the application through the web browser 
+    
+    VOLUME - Directory which we are going to create outside the container 
+    
+    ENV - if you want to pass the environment variables we are going to use ENV 
+    
+    Database URL , datbase User Name , Secret text 
+    
+    ARG - If you want to pass the arguments - ARG 
+    
+    SHELL - Itdefines on which shell you want to run the instructions 
+    
+    
+WORKDIR - To Copy or Whole project source WORKDIR 
+
+USER - 
+        
