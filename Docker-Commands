@@ -1,0 +1,4 @@
+1  yum install docker -y
+    2  service docker status
+    3  service docker start
+    4  service docker status
