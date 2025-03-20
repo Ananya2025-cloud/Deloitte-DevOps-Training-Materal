@@ -1,4 +1,48 @@
-1  yum install docker -y
+ 1  yum install docker -y
     2  service docker status
     3  service docker start
     4  service docker status
+    5  history
+    6  clear
+    7  docker create ubuntu /bin/bash
+    8  docker ps -a
+    9  docker start 20d51f068307
+   10  docker ps
+   11  docker ps -a
+   12  docker create -it --name webserver ubuntu /bin/bash
+   13  docker ps
+   14  docker ps -a
+   15  docker start webserver
+   16  docker ps
+   17  docker images
+   18  history
+   19  docker ps -a
+   20  docker ps
+   21  docker ps
+   22  docker exec -it webserver /bin/bash
+   23  docker ps
+   24  docker run -it --name sample-web amazonlinux /bin/bash
+   25  docker ps
+   26  docker start sample-web
+   27  docker exec -it sample-web /bin/bash
+   28  docker ps
+   29  docker images
+   30  history
+   31  docker ps
+   32  docker ps -a
+   33  docker start 20d51f068307
+   34  docker ps
+   35  docker ps -a
+   36  docker rm 20d51f068307
+   37  docker ps -a
+   38  docker rm -f 7d2b4da20b62
+   39  docker ps
+   40  docker imahes
+   41  docker imaes
+   42  clear
+   43  docker images
+   44  docker rmi ubuntu
+   45  docker images
+   46  docker ps
+   47  docker rename sample-web WebServer
+   48  docker ps
