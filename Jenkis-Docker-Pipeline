@@ -1,0 +1,100 @@
+pipeline {
+  agent any
+    parameters{
+        string(name: 'VERSION', description: 'Enter the APP VERSION')
+    }  
+environment{
+        
+        DOCKER_REGISTRY = 'docker.io'
+        DOCKER_REGISTRY_CREDENTIALS = 'docker-creds'
+    }
+  stages {
+    stage('Clone') {
+        steps {
+                // Explicitly clone the Git repository
+                echo 'Cloning the GitHub repository...'
+                git url: 'https://github.com/Msocial123/Transaction-History.git', branch: 'main'
+            }
+    }
+
+    stage('Docker build'){
+            steps{
+                script{                  
+                        sh """
+                         docker build -t deloitte-trans-bankapp:${VERSION} .
+                        """
+                }
+            }
+        }
+    
+    stage('Image push to Docker Hub'){
+            steps{
+                script{
+                        withCredentials([usernamePassword(credentialsId: "${DOCKER_REGISTRY_CREDENTIALS}", passwordVariable: 'DOCKER_PASSWORD', usernameVariable: 'DOCKER_USERNAME')]) {
+                    
+                        sh """
+                        docker login -u ${DOCKER_USERNAME} -p ${DOCKER_PASSWORD}
+                        docker tag deloitte-trans-bankapp:${VERSION}  muralisocial123/deloitte-trans-bankapp:${VERSION}
+                        docker push muralisocial123/deloitte-trans-bankapp:${VERSION}
+                        """
+                    
+                }
+                }
+            } 
+    }  
+     stage('Deploy in a Container'){
+            steps{
+                script{                  
+                        sh """
+                         docker run -td --name ever-app -p 3002:3000 deloitte-trans-bankapp:${VERSION}
+                        """
+                }
+            }
+        } 
+
+}
+}
+
+
+---
+
+node {
+    stage('Clone') {
+        echo 'Cloning the GitHub repository...'
+        git url: 'https://github.com/Msocial123/Transaction-History.git', branch: 'main'
+    }
+
+    stage('Docker build') {
+        sh """
+            docker build -t ever-example-test:${VERSION} .
+        """
+    }
+
+    stage('Image push to ECR') {
+        withEnv(["AWS_ACCOUNT_ID=237800767648", "REGION=us-west-2", "REPO_URI=${AWS_ACCOUNT_ID}.dkr.ecr.${REGION}.amazonaws.com/coursevita"]) {
+            withAWS(credentials: 'aws-creds', region: REGION) {
+                sh """
+                    aws ecr get-login-password --region ${REGION} | docker login --username AWS --password-stdin ${AWS_ACCOUNT_ID}.dkr.ecr.${REGION}.amazonaws.com
+                    docker tag ever-example-test:${VERSION} ${REPO_URI}:${VERSION}
+                    docker push ${REPO_URI}:${VERSION}
+                """
+            }
+        }
+    }
+
+    stage('Image push to Docker Hub') {
+        withCredentials([usernamePassword(credentialsId: 'docker-cred', passwordVariable: 'DOCKER_PASSWORD', usernameVariable: 'DOCKER_USERNAME')]) {
+            sh """
+                docker login -u ${DOCKER_USERNAME} -p ${DOCKER_PASSWORD}
+                docker tag ever-example-test:${VERSION} muralisocial123/ever-example-test:${VERSION}
+                docker push muralisocial123/ever-example-test:${VERSION}
+            """
+        }
+    }
+
+    stage('Deploy in a Container') {
+        sh """
+            docker run -td --name ever-app -p 3002:3000 ever-example-test:${VERSION}
+        """
+    }
+}

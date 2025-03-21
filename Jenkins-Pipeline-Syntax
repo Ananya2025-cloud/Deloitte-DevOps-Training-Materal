@@ -1,0 +1,35 @@
+Pipeline {
+    agent any 
+    Parameters String 
+    environment {
+        DOCKER_HUB: "docker-creds"
+    }
+    stages {
+        stage ('Git Clone')
+        {
+            steps {
+               sh 'git clone url , branch:main'
+            }
+        }
+        stage ('Build')
+        {
+            steps {
+                sh 'docker build -t docker image location of the dockerfile'
+            }
+        }
+        stage ('Push the docker image')
+        {
+            steps {
+                sh '''docker login
+                docker tag 
+                docker push  '''
+            }
+        }
+        stage ("Deploy the container")
+        {
+            steps {
+                sh 'docker run -td --name -p docker image'
+            }
+        }
+    }
+}
