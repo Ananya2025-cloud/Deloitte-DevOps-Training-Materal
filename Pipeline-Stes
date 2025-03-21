@@ -1,0 +1,18 @@
+How to Integrate Jenkins with Docker,git,GitHub
+
+	1. Manager Jenkins - Tools - Configure Git , Maven 
+	2. Mange Jenkins - Plugins - Docker 
+	3. Configure the docker - Manage Jenkins - Clouds - Add Cloud 
+	4. Save the hub.credencials in manage Jenkins - Credencials 
+
+
+Clone - Build - Push the docker image into hub.docker.com - Deploy the docker image inside the container 
+
+	1. Manual Pipelines 
+	2. Automation Pipelines - Scripted Pipelines  - Groove Pipeline , Declarative 
+
+
+	
+	
+	
+	
