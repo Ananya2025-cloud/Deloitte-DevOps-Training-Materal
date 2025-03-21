@@ -1,0 +1,10 @@
+   3 git clone -b master https://github.com/Msocial123/Dimple-CapsuleProject.git
+   4 docker ps
+   5 docker exec -it web-app /bin/bash
+   6 docker login
+   7 docker logout
+   8 docker login
+   9 docker images
+  10 docker tag deloitte-web-app:1.0 muralisocial123/deloitte-web-app:1.0
+  11 docker images
+  12 docker push muralisocial123/deloitte-web-app:1.0
