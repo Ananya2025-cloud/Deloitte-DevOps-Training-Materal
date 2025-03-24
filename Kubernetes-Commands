@@ -1,0 +1,23 @@
+ 1  vi cluster.sh
+    2  chmod 777 cluster.sh
+    3  sh cluster.sh
+    4  aws --version
+    5  kubectl
+    6  snap install kubectl --classic
+    7  kubectl
+    8  eksctl
+    9  clear
+   10  history
+   11  aws configure
+   12  aws confiure
+   13  aws configure
+   14  eksctl create cluster --name clahan-test-cluster --version 1.31 --region us-east-1 --nodegroup-name clahan-test-linux --node-type t2.medium --nodes 2 --nodes-min 2 --nodes-max 5 --managed
+   15  eksctl create cluster --name clahan-test-cluster1 --version 1.31 --region us-east-1 --nodegroup-name clahan-test-linux1 --node-type t2.medium --nodes 2 --nodes-min 2 --nodes-max 5 --managed
+   16  aws eks update-kubeconfig --name clahan-test-linux1 --region us-east-1
+   17  aws eks update-kubeconfig --name clahan-test-cluster1 --region us-east-1
+   18  kubectl get nodes
+   19  kubectl get ns
+   20  kubectl get all -n kube-public
+   21  kubectl get all -n kube-system
+   22  kubectl create ns test-ns
+   23  kubectl get ns
