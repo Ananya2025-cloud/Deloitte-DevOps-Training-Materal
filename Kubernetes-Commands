@@ -21,3 +21,8 @@
    21  kubectl get all -n kube-system
    22  kubectl create ns test-ns
    23  kubectl get ns
+   kubectl run test-pod --image muralisocial123/organic-app-web:latest --port 5656 -n test-ns
+   29  kubectl get pods
+   30  kubectl get pods -n test-ns
+   31  kubectl describe pod test-pod
+   32  kubectl describe pod test-pod -n test-ns
