@@ -1,0 +1,12 @@
+apiVersion: v1 
+kind: Pod 
+metadata: 
+  name: oragnic-pod 
+  namespace: test-ns 
+spec:
+  containers:
+    - name: sample-web
+      image: muralisocial123/organic-app-web:latest
+      ports:
+        - containerPort: 5656
+
