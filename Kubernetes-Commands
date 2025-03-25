@@ -98,8 +98,6 @@
    86  kubectl get hap
    87  kubectl get hpa
    88  sudo apt update && sudo apt install apache2-utils -y
-   89  sudo yum install httpd-tools -y
-   90  sudo dnf install httpd-tools -y
    91  sudo apt update && sudo apt install apache2-utils -y
    92  ab -V
    93  ab -n 20000 -c 1000 http://a20d287a3c9d84acab76b6018ab6d001-203260571.us-east-1.elb.amazonaws.com:5657/
