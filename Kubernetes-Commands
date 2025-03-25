@@ -54,4 +54,19 @@
    44  kubectl top pods
    45  kubectl top pods -n test-ns
    46  kubectl describe pod oragnic-pod -n test-ns
+    48  kubectl get ns
+   49  kubectl get pods -n test-ns
+   50  kubectl delete pod test-pod
+   51  kubectl delete pod test-pod -n test-ns
+   52  kubectl get pods -n test-ns
+   53  git pull
+   54  kubectl apply -f rs.yaml
+   55  kubectl get rs
+   56  kubectl describe rs sample-rs
+   57  kubectl get pods
+   58  kubectl delete pod sample-rs-f2z4f
+   59  kubectl get pods -o wide
+   60  kubectl delete pod sample-rs-jjt6v sample-rs-m88nd
+   61  kubectl get pods -o wide
+
 
