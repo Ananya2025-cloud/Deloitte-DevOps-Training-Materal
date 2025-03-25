@@ -1,0 +1,19 @@
+apiVersion: apps/v1 
+kind: ReplicaSet 
+metadata: 
+  name: sample-rs 
+spec:  # Define the behaviour of the replicaset 
+  replicas: 5
+  selector:
+    matchLabels:
+      app: web
+  template: # It Contains the pod defination 
+    metadata:
+      labels:
+        app: web 
+    spec: # Define the Pod Definantion 
+      containers:
+        - name: test-cont 
+          image: muralisocial123/organic-app-web:latest
+          ports:
+            - containerPort: 5656     
