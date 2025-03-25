@@ -23,5 +23,17 @@ spec:
             cpu: "50m" 
         ports:
         - containerPort: 5656
+--- 
+apiVersion: v1 
+kind: Service
+metadata:
+  name: web-app-deployment-svc
+spec:
+  selector:
+    app: organic
+  ports:
+  - port: 5657
+    targetPort: 5656
+  type: LoadBalancer   
 
   
