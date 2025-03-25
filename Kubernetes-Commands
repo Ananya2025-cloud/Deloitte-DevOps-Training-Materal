@@ -26,3 +26,32 @@
    30  kubectl get pods -n test-ns
    31  kubectl describe pod test-pod
    32  kubectl describe pod test-pod -n test-ns
+
+   ______________________________________________________________________________
+   25/03/2025 - Commands 
+      22  kubectl apply -f ns.yaml
+   23  kubectl get ns
+   24  kubectl get nodes -o wide
+   25  kubectl get nodes
+   26  kubectl get nodes -o wide
+   27  clear
+   28  git pull
+   29  ls
+   30  kubectl apply -f pod.yaml
+   31  kubectl get pods
+   32  kubectl get pods -n test-ns
+   33  kubectl describe pod oragnic-pod -n test-ns
+   34  kubectl get events
+   35  clear
+   36  kubectl get pods -o wide
+   37  kubectl get pods -o wide -n test-ns
+   38  curl
+   39  curl 192.168.50.254:5656
+   40  kubectl get pods
+   41  clear
+   42  kubectl top pods
+   43  kubectl top nodes
+   44  kubectl top pods
+   45  kubectl top pods -n test-ns
+   46  kubectl describe pod oragnic-pod -n test-ns
+
