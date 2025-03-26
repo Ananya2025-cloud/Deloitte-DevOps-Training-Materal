@@ -4,7 +4,9 @@ pipeline {
         string(name: 'VERSION', description: 'Enter the APP VERSION')
     }  
 environment{
-        
+        AWS_ACCOUNT_ID="586794440822"
+        REGION="us-west-1"
+        REPO_URI="${AWS_ACCOUNT_ID}.dkr.ecr.${REGION}.amazonaws.com/excelr"
         DOCKER_REGISTRY = 'docker.io'
         DOCKER_REGISTRY_CREDENTIALS = 'docker-creds'
     }
@@ -13,7 +15,7 @@ environment{
         steps {
                 // Explicitly clone the Git repository
                 echo 'Cloning the GitHub repository...'
-                git url: 'https://github.com/Msocial123/Transaction-History.git', branch: 'main'
+                git url: 'https://github.com/Msocial123/E-CommerceCartPage_Yuktha.git', branch: 'master'
             }
     }
 
@@ -21,12 +23,26 @@ environment{
             steps{
                 script{                  
                         sh """
-                         docker build -t deloitte-trans-bankapp:${VERSION} .
+                         docker build -t cart-page-test:${VERSION} .
                         """
                 }
             }
         }
-    
+
+    stage('Image push to ECR'){
+            steps{
+                script{
+                    withAWS(credentials: 'aws-creds', region: "${REGION}") {
+                        sh """
+                            aws ecr get-login-password --region ${REGION} | docker login --username AWS --password-stdin ${AWS_ACCOUNT_ID}.dkr.ecr.${REGION}.amazonaws.com
+                        docker tag cart-page-test:${VERSION} ${REPO_URI}:${VERSION}
+                        docker push ${REPO_URI}:${VERSION}
+                        """
+                    }
+                }
+            }
+        }
+        
     stage('Image push to Docker Hub'){
             steps{
                 script{
@@ -34,8 +50,8 @@ environment{
                     
                         sh """
                         docker login -u ${DOCKER_USERNAME} -p ${DOCKER_PASSWORD}
-                        docker tag deloitte-trans-bankapp:${VERSION}  muralisocial123/deloitte-trans-bankapp:${VERSION}
-                        docker push muralisocial123/deloitte-trans-bankapp:${VERSION}
+                        docker tag cart-page-test:${VERSION}  muralisocial123/cart-page-test:${VERSION}
+                        docker push muralisocial123/cart-page-test:${VERSION}
                         """
                     
                 }
@@ -46,7 +62,7 @@ environment{
             steps{
                 script{                  
                         sh """
-                         docker run -td --name ever-app -p 3002:3000 deloitte-trans-bankapp:${VERSION}
+                         docker run -td --name ever-app -p 3002:3000 cart-page-test:${VERSION}
                         """
                 }
             }
