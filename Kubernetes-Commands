@@ -111,7 +111,7 @@
    26  kubectl get roles
    27  kubectl get roles -n prod-ns
    28  kubectl get rolebindings -n prod-ns
-   ************************************************* ArgoCD Deployments 
+   ************************************************* ArgoCD Deployments ****** 26/03/2025
    34  git clone -b dev https://github.com/Msocial123/AWS-Retail-App.git
    35  ls
    36  cd AWS-Retail-App/
