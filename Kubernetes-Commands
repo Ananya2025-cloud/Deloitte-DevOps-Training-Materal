@@ -105,6 +105,44 @@
    95  kubectl get pods
    96  kubectl get hap
    97  kubectl get hpa
+   ***************************************************8
+    kubectl apply -f 01-rbac.yaml
+   25  kubectl get ns
+   26  kubectl get roles
+   27  kubectl get roles -n prod-ns
+   28  kubectl get rolebindings -n prod-ns
+   ************************************************* ArgoCD Deployments 
+   34  git clone -b dev https://github.com/Msocial123/AWS-Retail-App.git
+   35  ls
+   36  cd AWS-Retail-App/
+   37  ls
+   38  kubectl create namespace argocd
+   39  kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+   40  kubectl get ns
+   41  kubectl get all -n argocd
+   42  Kubectl create ns retail
+   43  kubectl create ns retail
+   44  curl -sSL -o argocd-linux-amd64 https://github.com/argoproj/argo-cd/releases/latest/download/argocd-linux-amd64
+   45  sudo install -m 555 argocd-linux-amd64 /usr/local/bin/argocd
+   46  rm argocd-linux-amd64
+   47  kubectl patch svc argocd-server -n argocd -p '{"spec": {"type": "LoadBalancer"}}'
+   48  kubectl port-forward svc/argocd-server -n argocd 8080:443
+   49  kubectl get all -n argocd
+   50  argocd admin initial-password -n argocd
+   51  argocd login ad3beedead25948ce8942a31a372966f-1581313888.us-east-1.elb.amazonaws.com:80
+   52  argocd account update-password
+   53  kubectl config get-contexts -o name
+   54  argocd cluster add ntrainer@clahan-example-cluster.us-east-1.eksctl.io
+   55  kubectl create namespace argo-rollouts
+   56  kubectl apply -n argo-rollouts -f https://github.com/argoproj/argo-rollouts/releases/latest/download/install.yaml
+   57  helm
+   58  snap install helm  --classic
+   59  ls
+   60  helm install retail-app Retail-chart/
+   61  helm list
+   62  kubectl get all
+
+
 
 
 
